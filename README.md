@@ -6,7 +6,11 @@ Currently the framework has the following capabilities:
 # DataLoader
 data_loader class maps embeddings to text data sets. This code needs to edited to be able to accept different kinds embedding and text data sets. <br/>
 
-This class loads the defined embeddings on a 
+This class loads embeddings based on a defined strategy. Currently two versions are implemented:
+ - `embedding_loading='top_k'`
+ - `embedding_loading='in_dict'`
+`top_k` loads the first `k` embeddings from file, assuming that they are sorted by most frequent on the top<br/>
+`in_dict` preloads all embeddings and the selects only those embeddings that occure in the text data set. <br/>
 
 Currently a set of out-of-the-box embedding and text data sets have been implemented. These are:
 

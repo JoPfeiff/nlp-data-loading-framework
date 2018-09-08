@@ -8,7 +8,7 @@ data_loader class maps embeddings to text data sets. This code needs to edited t
 
 This class loads embeddings based on a defined strategy. Currently two versions are implemented:
  - `embedding_loading='top_k'`
- - `embedding_loading='in_dict'`
+ - `embedding_loading='in_dict'` <br/>
 `top_k` loads the first `k` embeddings from file, assuming that they are sorted by most frequent on the top<br/>
 `in_dict` preloads all embeddings and the selects only those embeddings that occure in the text data set. <br/>
 

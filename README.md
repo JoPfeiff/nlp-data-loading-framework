@@ -6,7 +6,7 @@ Currently the framework has the following capabilities:
 # Embeddings
   - Any kind of Embeddings in text documents in the structure 
       ```
-      <word>\t<float>\t<float>\t...\t<float>
+      <word>\t<float>\t<float>\t...\t<float>\n
       ```
     can be processed using the data_loading parameter embeddings_initial='Path'
   - pre-implemented word embeddings are:

@@ -44,5 +44,25 @@ Currently a set of out-of-the-box embedding and text data sets have been impleme
           - `embeddings_initial='Polyglot'`
  
 ## Text Data Sets
-  
+The text data set implements a bucketized loading structure. That means, that sentences are bucketized based on their length (conditioned on words in the dictionary) and stored in memory. <br/>
+A generator is callable that loops through each of the data points randomly by first sampling a bucket, and then sampling from each bucket. <br/>
+Out-of-the-box text data sets are:
+ - SNLI data set <br/>
+   `data_set='SNLI'` <br/>
+ https://nlp.stanford.edu/projects/snli/snli_1.0.zip <br/>
+ - Billion Word Benchmark data set <br/>
+   `data_set='BillionWords'` <br/>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 

@@ -10,7 +10,7 @@ Currently the framework has the following capabilities:
       ```
     can be processed using the data_loading parameter embeddings_initial='Path'
   - pre-implemented word embeddings are:
-      - Fast-Text:
+      - Fast-Text: \\
           https://fasttext.cc/docs/en/english-vectors.html
           - embeddings_initial='FastText-Crawl'
           - embeddings_initial='FastText-Wiki'

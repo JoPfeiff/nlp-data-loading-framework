@@ -56,27 +56,27 @@ This object is called if the parameter `embeddings_initial='Path'` is called whe
     `embedding_params = {'path':'../data/embeddings/bow2.words', 'name':'bow2'}` <br/>
     
 A set of pre-implemented word embeddings are:
-      - Fast-Text: <br/>
-          https://fasttext.cc/docs/en/english-vectors.html
-          - `embeddings_initial='FastText-Crawl'`
-          - `embeddings_initial='FastText-Wiki'`
-      - Glove-Embeddings:<br/>
-          https://nlp.stanford.edu/projects/glove/
-          - `embeddings_initial='Glove-Twitter-25'`
-          - `embeddings_initial='Glove-Twitter-50'`
-          - `embeddings_initial='Glove-Twitter-100'`
-          - `embeddings_initial='Glove-Twitter-200'`
-          - `embeddings_initial='Glove-Common-42B-300'`
-          - `embeddings_initial='Glove-Common-840B-300'`
-          - `embeddings_initial='Glove-Wiki-50'`
-          - `embeddings_initial='Glove-Wiki-100'`
-          - `embeddings_initial='Glove-Wiki-200'`
-          - `embeddings_initial='Glove-Wiki-300'`
-       - Lear-Embeddings: <br/>
-          - `embeddings_initial='Lear'`
-       - Polyglot-Embeddings: <br/>
-          http://bit.ly/19bSoAS
-          - `embeddings_initial='Polyglot'`
+  - Fast-Text: <br/>
+      https://fasttext.cc/docs/en/english-vectors.html
+      - `embeddings_initial='FastText-Crawl'`
+      - `embeddings_initial='FastText-Wiki'`
+  - Glove-Embeddings:<br/>
+      https://nlp.stanford.edu/projects/glove/
+      - `embeddings_initial='Glove-Twitter-25'`
+      - `embeddings_initial='Glove-Twitter-50'`
+      - `embeddings_initial='Glove-Twitter-100'`
+      - `embeddings_initial='Glove-Twitter-200'`
+      - `embeddings_initial='Glove-Common-42B-300'`
+      - `embeddings_initial='Glove-Common-840B-300'`
+      - `embeddings_initial='Glove-Wiki-50'`
+      - `embeddings_initial='Glove-Wiki-100'`
+      - `embeddings_initial='Glove-Wiki-200'`
+      - `embeddings_initial='Glove-Wiki-300'`
+   - Lear-Embeddings: <br/>
+      - `embeddings_initial='Lear'`
+   - Polyglot-Embeddings: <br/>
+      http://bit.ly/19bSoAS
+      - `embeddings_initial='Polyglot'`
  
 ## Text Data Sets
 The text data set implements a bucketized loading structure. That means, that sentences are bucketized based on their length (conditioned on words in the dictionary) and stored in memory. <br/>

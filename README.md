@@ -14,7 +14,8 @@ We therefore want to create a framework that provides these common functionaliti
 Currently the framework has the following capabilities:
 
 # DataLoader
-data_loader class maps embeddings to text data sets. This code needs to edited to be able to accept different kinds embedding and text data sets. <br/>
+This is the main class to-be-called and can be found in `data_loading/data_loader.py` <br/>
+The data_loader class maps embeddings to text data sets. This code needs to edited to be able to accept different kinds embedding and text data sets. <br/>
 In order to combine Fast-Text embeddings with the SNLI data set we can call the data_loader by:
 ```
 dl = DataLoader(data_set='SNLI', embedding_loading='in_dict', embeddings_initial='FastText-Wiki', 
@@ -40,17 +41,21 @@ However, these functions only dump what has currently been loaded into the objec
 `dl.get_all_and_dump()` <br/>
 This function also automatically bucketizes all the sentences based on the defined bucketizing strategy. <br/>
 
+The current tokenizer is based on spaCy.io and can easily be replaced in `data_loading/data_utils.py` in the function `tokenize()`
+
 Currently a set of out-of-the-box embedding and text data sets have been implemented. These are:
 
 ## Embeddings
-  - Any kind of Embeddings in text documents in the structure 
+The core class is `Embeddings` which can be found in `embeddings/embeddings.py`. However, this should only be used as the super class for the specialized embeddings. New embedding inherit this class (e.g. `class FastTextEmbeddings(Embeddings)` in  `embeddings/fasttext_embeddings.py`). Only if the embeddings are to be initialized randomly, the core `Embeddings` class is to be called. <br/>
+
+A generic path-based embedding class is implemented that can process any kind of Embeddings stored as text documents in the structure 
       ```
       <word>\t<float>\t<float>\t...\t<float>\n
       ```
-    can be processed using the data_loading parameter embeddings_initial='Path'. The parameters, e.g. where the embedding data can be found is passed in a dictionary: <br/>
-    `embedding_params = {'path':'../data/embeddings/bow2.words', 'name':'bow2'}`
+This object is called if the parameter `embeddings_initial='Path'` is called when creating the `data_loading` object. The parameters, e.g. where the embedding data is stored, is passed as a dictionary: <br/>
+    `embedding_params = {'path':'../data/embeddings/bow2.words', 'name':'bow2'}` <br/>
     
-  - pre-implemented word embeddings are:
+A set of pre-implemented word embeddings are:
       - Fast-Text: <br/>
           https://fasttext.cc/docs/en/english-vectors.html
           - `embeddings_initial='FastText-Crawl'`

@@ -15,7 +15,7 @@ Currently the framework has the following capabilities:
 
 # DataLoader
 This is the main class to-be-called and can be found in `data_loading/data_loader.py` <br/>
-The data_loader class maps embeddings to text data sets. This code needs to edited to be able to accept different kinds embedding and text data sets. <br/>
+The `DataLoader` class maps embeddings to text data sets. This code needs to edited to be able to accept different kinds embedding and text data sets. <br/>
 In order to combine Fast-Text embeddings with the SNLI data set we can call the data_loader by:
 ```
 dl = DataLoader(data_set='SNLI', embedding_loading='in_dict', embeddings_initial='FastText-Wiki', 
@@ -92,6 +92,21 @@ To implement a new Embedding class, this should inherit the class `Embeddings` w
  - `get_name(self)` <br/>
     This should return the name of the embeddings e.g. `'FastText-Wiki'`
 
+The new functionality needs to be added to `DataLoader` in  `data_loading/data_loader.py`. The defined object needs to be callable in this object using a name. Two new lines need to be added to:
+```
+            if self.embeddings_initial in FASTTEXT_NAMES:
+                self.embedding = FastTextEmbeddings(self.embeddings_initial)
+            elif self.embeddings_initial in POLYGLOT_NAMES:
+                self.embedding = PolyglotEmbeddings()
+            elif self.embeddings_initial in LEAR_NAMES:
+                self.embedding = LearEmbeddings()
+            elif self.embeddings_initial in GLOVE_NAMES:
+                self.embedding = GloveEmbeddings(self.embeddings_initial)
+            elif self.embeddings_initial == "Path":
+                self.embedding = PathEmbeddings(self.embedding_params)
+            else:
+                raise Exception("No valid embedding was set")
+```
  
 ## Text Data Sets
 The text data set implements a bucketized loading structure. That means, that sentences are bucketized based on their length (conditioned on words in the dictionary) and stored in memory. <br/>

@@ -133,11 +133,38 @@ The new class needs two functions:
      - each data point is to be stored as a dictionary element ({}) and stored in the list (e.g. `self.data_set['train'] = []`) 
      - parsing a sentence is to be done using 
      ```
-     elem['sentence1_positions'] = self.embeddings.encode_sentence(elem['sentence1'], 
+     elem['sentence'] = self.embeddings.encode_sentence(string_sentence, 
                                                                    initialize=initialize_term, 
                                                                    count_up=True) 
      ```
-        
+     for which `string_sentence` is the raw text format of the sentence to be encoded. The defined `tokenizer` in `data_utils` will tokenize this string.
+ - bucketize_data() <br/>
+    This function bucketizes the data into defined buckets based on the length which self.embeddings.encode_sentence() has returned. The data needs to stored in the format:
+    ```
+            bucketized[bucket_name] = {}
+            bucketized[bucket_name]['data'] = []
+            bucketized[bucket_name]['buckets'] = [bucket_size]
+            bucketized[bucket_name]['length'] = 0
+            bucketized[bucket_name]['position'] = 0
+    ```
+      This is to be predefined for each bucket. <br/>
+      - `data` includes all data points in element dictionary format <br/>
+      - `buckets` is the bucket size (or bucket sizes for SNLI) <br/>
+      - `length` is the number of data points in this bucket <br/>
+      - `position` is to be defined 0 and will be counted up in the generator (refer to logic in generator to understand this) <br/>
+      Each data point is to be processed using `pad_positions(elem['sentence_positions'], PAD_position, b1)`<br/>
+      Each data point in each bucket needs the following information: <br/>
+      ```
+      elem['sentence_length'] = int
+      elem['sentence_positions'] = list
+      ```
+      For which <br/>
+      - `sentence_length` is the actual length of the sentence befor padding <br/>
+      - `sentence_positions` is a list of indexes including the padded words <br/>
+
+Please refer to `text/SNLI_data_loading.py` and `text/billion_words.py` for more information
+      
+      
  
  
  

@@ -8,7 +8,8 @@ Currently the framework has the following capabilities:
 data_loader class maps embeddings to text data sets. This code needs to edited to be able to accept different kinds embedding and text data sets. <br/>
 In order to combine Fast-Text embeddings with the SNLI data set we can call the data_loader by:
 ```
-dl = DataLoader(data_set='SNLI', embedding_loading='in_dict', embedding_params={}, K_embeddings=float('inf'))
+dl = DataLoader(data_set='SNLI', embedding_loading='in_dict', embeddings_initial='FastText-Wiki', 
+                embedding_params={}, K_embeddings=float('inf'))
 gen = dl.get_generator(data_set='train', batch_size=64, drop_last=True)
 data , batch = gen.next()
 ```

@@ -162,9 +162,24 @@ The new class needs two functions:
       - `sentence_length` is the actual length of the sentence befor padding <br/>
       - `sentence_positions` is a list of indexes including the padded words <br/>
 
-Please refer to `text/SNLI_data_loading.py` and `text/billion_words.py` for more information
+ Please refer to `text/SNLI_data_loading.py` and `text/billion_words.py` for more information
       
-      
+ The capabilities for the new text data set need to be added and callable in `DataLoader` here:
+ 
+ ```
+         if data_set == "SNLI":
+            self.labels = {'neutral': 0, 'entailment': 1, 'contradiction': 2, '-': 3}
+            self.data_ob = SNLIData(self.labels, data_params=param_dict, bucket_params=bucket_params,
+                                    embeddings=self.embedding)
+            self.load_class_data = self.data_ob.load_snli
+            self.generator = self.data_ob.generator
+        elif data_set == 'billion_words':
+            self.data_ob = BillionWordsData(embeddings=self.embedding, data_params=param_dict)
+            self.load_class_data = self.data_ob.load_billion_words
+            self.generator = self.data_ob.generator
+        else:
+            raise Exception("No valid data_set set was set")
+ ```
  
  
  

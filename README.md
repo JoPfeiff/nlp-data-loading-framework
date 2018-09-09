@@ -107,6 +107,8 @@ The new functionality needs to be added to `DataLoader` in  `data_loading/data_l
             else:
                 raise Exception("No valid embedding was set")
 ```
+
+For reference please look at `embeddings/fasttext_embeddings.py`
  
 ## Text Data Sets
 The text data set implements a bucketized loading structure. That means, that sentences are bucketized based on their length (conditioned on words in the dictionary) and stored in memory. <br/>

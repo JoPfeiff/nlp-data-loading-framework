@@ -1,6 +1,15 @@
 # nlp-data-loading-framework
 We are trying to define a framework for NLP tasks that easily maps any kind of word embedding data set with any kind of text data set. The framework should decrease the amount of additional code needed to work on different NLP tasks. <br/>
-We have found that for many NLP
+We have found that for many NLP tasks similar preprocessing steps are needed. <br/>
+This entails 
+  - tokenizing the text 
+  - replacing words with embeddings (pretrained or newly learnt)
+  - bucketizing sentences based on their length
+  - padding sentences to a specific length
+  - replacing unseen words with `<UNK>`
+  - creating a generator that loops through the sentences <br/>
+ 
+We therefore want to create a framework that provides these common functionalities out-of-the-box to be able to focus on the core task of the project faster. <br/>
 
 Currently the framework has the following capabilities:
 

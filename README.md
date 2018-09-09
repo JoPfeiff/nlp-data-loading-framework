@@ -1,4 +1,4 @@
-# nlp-data-loading-framework
+# Framework for NLP Text Data
 We are trying to define a framework for NLP tasks that easily maps any kind of word embedding data set with any kind of text data set. The framework should decrease the amount of additional code needed to work on different NLP tasks. <br/>
 We have found that for many NLP tasks similar preprocessing steps are needed. <br/>
 This entails 
@@ -77,6 +77,21 @@ A set of pre-implemented word embeddings are:
    - Polyglot-Embeddings: <br/>
       http://bit.ly/19bSoAS
       - `embeddings_initial='Polyglot'`
+      
+### Implementing new Embedding classes
+To implement a new Embedding class, this should inherit the class `Embeddings` which can be found in `embeddings/embeddings.py`. This has all the basic functionality implemented thats needed for most embedding data. The new Embedding class only needs two functions which are data set dependet. These are: <br/>
+ - `load_top_k(self, K, preload=False)` <br/>
+      This loads the top_k embeddings from file with the assumption that the embeddings are ordered based on their frequency. The following functionalities for implementing this function are important:
+      - Adding the term should be done using <br/>
+        `self.add_term(term, preload=preload)`
+      - If special embeddings (`<UNK>`, `<PAD>`, `<START>`, `<END>`) need to be added, this is to be done using <br/>
+        `special_embeddings = self.add_special_embeddings(len(embeddings[0]), preload=preload)`
+      - The function should return the embeddings as a `np.array()` <br/>
+        `return np.array(embeddings)`     
+      
+ - `get_name(self)` <br/>
+    This should return the name of the embeddings e.g. `'FastText-Wiki'`
+
  
 ## Text Data Sets
 The text data set implements a bucketized loading structure. That means, that sentences are bucketized based on their length (conditioned on words in the dictionary) and stored in memory. <br/>

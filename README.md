@@ -120,7 +120,24 @@ Out-of-the-box text data sets are:
  - Billion Word Benchmark data set <br/>
    `data_set='BillionWords'` <br/>
  
- 
+### Implementing New Text Data Sets
+
+New text data sets are to inherit the class `TextData` that can be found in `text/text_data.py`. This class has out-of-the-box functionalities like loading and storing data, but also a generator function is defined here, which samples from bucketized sentences. <br/>
+The new class needs two functions:
+ - loading() <br/>
+    The data is loaded to memory and extracted into sentences. <br/>
+    Important factors of this function:
+     - data is to be stored in `self.data_set` <br/>
+        This variable has been initialized in `TextData` and is a dictionary.
+     - raw data is to be stored in `self.data_set['train']`, `self.data_set['dev']` and `self.data_set['test']` 
+     - each data point is to be stored as a dictionary element ({}) and stored in the list (e.g. `self.data_set['train'] = []`) 
+     - parsing a sentence is to be done using 
+     ```
+     elem['sentence1_positions'] = self.embeddings.encode_sentence(elem['sentence1'], 
+                                                                   initialize=initialize_term, 
+                                                                   count_up=True) 
+     ```
+        
  
  
  

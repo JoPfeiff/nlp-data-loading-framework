@@ -1,6 +1,6 @@
 ### Contributors
-Aishwarya Kamath @ashkamath: https://github.com/ashkamath <br/>
-Jonas Pfeiffer @JoPfeiff: https://github.com/JoPfeiff
+Aishwarya Kamath  @ashkamath:   https://github.com/ashkamath <br/>
+Jonas Pfeiffer    @JoPfeiff:    https://github.com/JoPfeiff
 
 # Framework for NLP Text Data
 We are trying to define a framework for NLP tasks that easily maps any kind of word embedding data set with any kind of text data set. The framework should decrease the amount of additional code needed to work on different NLP tasks. <br/>

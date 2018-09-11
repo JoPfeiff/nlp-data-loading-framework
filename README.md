@@ -1,5 +1,5 @@
 ### Contributors
-Aishwarya Kamath @ashkamath: https://github.com/ashkamath
+Aishwarya Kamath @ashkamath: https://github.com/ashkamath <br/>
 Jonas Pfeiffer @JoPfeiff: https://github.com/JoPfeiff
 
 # Framework for NLP Text Data
